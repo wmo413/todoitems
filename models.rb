@@ -21,9 +21,20 @@ class User
     end
 end
 
+class TodoItem
+  include DataMapper::Resource
+  property :id, Serial
+  property :text, Text
+  property :completed, Boolean, default: false
+  property :created_at, DateTime
+  property :user_id, Integer
+end
+
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
 
 # automatically create the post table
 User.auto_upgrade!
+TodoItem.auto_upgrade!
+
