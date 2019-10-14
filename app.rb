@@ -34,7 +34,7 @@ end
 patch "/todo_items/:id" do
 	api_authenticate!
 
-	item = Item.get(params["id"])
+	item = TodoItem.get(params["id"])
 	if item != nil
 		
 		if item.user_id == current_user.id
@@ -67,7 +67,7 @@ end
 #DELETE /todo_items/1
 delete "/todo_items/:id" do
 	api_authenticate!
-	item = Item.get(params["id"])
+	item = TodoItem.get(params["id"])
 
 	if item != nil
 		if item.user_id == current_user.id
