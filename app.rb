@@ -15,6 +15,7 @@ post "/todo_items" do
 	t = TodoItem.new
 	t.text = params["text"]
 	t.user_id = current_user.id
+	t.completed = params["completed"]
 	t.save
 
 	halt 201, t.to_json
